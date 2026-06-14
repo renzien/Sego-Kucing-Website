@@ -1,122 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { motion } from 'framer-motion';
+import catLogo from './assets/cat-logo.png';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <div className="app-container">
+      <section className="hero">
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="hero-content"
         >
-          Count is {count}
-        </button>
+          <img src="{catLogo}" alt="Sego Kucing Studio Logo" className="logo" />
+          <h1 className="pixel-text title">SEGO KUCING STUDIO</h1>
+
+          <motion.p
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="pixel-text scroll-prompt"
+          >
+            Scroll to See More
+          </motion.p>
+        </motion.div>
       </section>
 
-      <div className="ticks"></div>
+      <section className="tujuan">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="section-content"
+        >
+          <h2 className="pixel-text text-center">Tujuan</h2>
+          <p className="pixel-text-small text-center mt-30">
+            Membuat sebuah game yang dirancang khusus untuk kepuasan player dan aiming menjadi Game of The Year.
+          </p>
+        </motion.div>
+      </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      <section className="team">
+        <h2 className="pixel-text text-center">Team</h2>
+        <div className="team-grid">
+          {[1, 2, 3, 4].map((member) => (
+            <motion.div
+              key={member}
+              whileHover={{ scale: 1.1 }}
+              className="team-card"
+            >
+              <div className="placeholder-photo"></div>
+              <p className="pixel-text-small">Member {member}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <section className="contact">
+        <h2 className="pixel-text text-center">Contact Us</h2>
+        <form className="contact-form">
+          <input type="text" placeholder="Name" className="pixel-input" />
+          <input type="text" placeholder="Email" className="pixel-input" />
+          <textarea placeholder="Message" className="pixel-input" rows="5"></textarea>
+          <button type="submit" className="pixel-btn"></button>
+        </form>
+      </section>
+
+      <footer className="footer">
+        <p className="pixel-text-small">© 2026 Sego Kucing Studio. All rights reserved.</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
