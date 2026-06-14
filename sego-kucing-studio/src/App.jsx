@@ -12,7 +12,7 @@ function App() {
           transition={{ duration: 1 }}
           className="hero-content"
         >
-          <img src="{catLogo}" alt="Sego Kucing Studio Logo" className="logo" />
+          <img src={catLogo} alt="Sego Kucing Studio Logo" className="logo" />
           <h1 className="pixel-text title">SEGO KUCING STUDIO</h1>
 
           <motion.p
